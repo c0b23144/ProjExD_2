@@ -26,7 +26,15 @@ def check_bound(obj_rct) -> tuple[bool, bool]:
         tate = False
     return yoko, tate
 
-
+def reverse_tuple(obj) -> tuple[str, int]: #演習２
+   """
+   リストのタプルを返す
+   引数:拡大爆弾
+   """
+def deth_kk(obj_kk) -> bool:
+    """
+    gameoverの関数
+    """
 
 def main():
     pg.display.set_caption("逃げろ！こうかとん")
@@ -41,6 +49,14 @@ def main():
     bd_rct = bd_img.get_rect()
     bd_rct.center = random.randint(0, WIDTH), random.randint(0, HEIGHT)
     vx, vy = +5, +5
+    fonto = pg.font.Font(None, 80)
+    kk2_img = pg.transform.rotozoom(pg.image.load("fig/1.png"), 0, 2.0)
+    kk2_rct = kk_img.get_rect()
+    kk2_rct.center = 1000, 430
+    kk3_img = pg.transform.rotozoom(pg.image.load("fig/1.png"), 0, 2.0)
+    kk3_rct = kk_img.get_rect()
+    kk3_rct.center = 600, 430
+    
 
     clock = pg.time.Clock()
     tmr = 0
@@ -49,7 +65,18 @@ def main():
             if event.type == pg.QUIT: 
                 return
         if kk_rct.colliderect(bd_rct):  #こうかとん死亡
+            clock = pg.time.Clock()
+            go_rct = pg.Surface((WIDTH, HEIGHT))
+            pg.draw.rect(go_rct, (0, 0, 0), pg.Rect(0, 0, WIDTH, HEIGHT))
+            go_rct.set_alpha(200)
+            screen.blit(go_rct, [0, 0])
+            txt = fonto.render("Game Over", True, (255, 255, 255))
+            screen.blit(txt, [650, 400])
+            screen.blit(kk2_img, kk2_rct)
             print("Game Over")
+
+            pg.display.update()
+            clock.tick(0.2)
             return
         screen.blit(bg_img, [0, 0]) 
 
