@@ -67,10 +67,10 @@ def main():
         if kk_rct.colliderect(bd_rct):  #こうかとん死亡
             clock = pg.time.Clock()
             go_rct = pg.Surface((WIDTH, HEIGHT))
-            pg.draw.rect(go_rct, (0, 0, 0), pg.Rect(0, 0, WIDTH, HEIGHT))
+            pg.draw.rect(go_rct, (0), pg.Rect(0, 0, WIDTH, HEIGHT))
             go_rct.set_alpha(200)
             screen.blit(go_rct, [0, 0])
-            txt = fonto.render("Game Over", True, (255, 255, 255))
+            txt = fonto.render("Game Over", True, (255,255,255))
             screen.blit(txt, [650, 400])
             screen.blit(kk2_img, kk2_rct)
             print("Game Over")
